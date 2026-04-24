@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Static HTTP Server",
+      "runtimeExecutable": "ruby",
+      "runtimeArgs": ["/Users/maksimvdovkin/Desktop/My music/site/server.rb"],
+      "port": 3000
+    }
+  ]
+}
