@@ -153,19 +153,28 @@
     position: absolute;
     bottom: 60px;
     right: 32px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--fg-dim);
     text-align: right;
     opacity: 0;
     animation: fadeUp 0.8s ease 0.6s forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
-  .hero-meta strong {
-    color: var(--fg);
+  .hero-stat strong {
+    color: var(--accent);
     display: block;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 36px;
+    font-weight: 900;
     font-family: 'Fraunces', serif;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .hero-stat span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--fg-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   /* SECTIONS */
@@ -554,16 +563,25 @@
   <section class="hero">
     <div class="container">
       <div class="hero-label">Доступен для проектов · 2026</div>
-      <h1>Делаю <em>то, что нужно</em><br>для вашего бизнеса</h1>
+      <h1>Сделаю <em>звук, который<br>продаст</em> твою музыку</h1>
       <p class="hero-desc">Короткая цепляющая фраза про то, чем вы занимаетесь и какую пользу приносите клиентам. 1–2 предложения, без воды.</p>
       <div class="hero-actions">
         <a href="#services" class="btn-primary">Смотреть услуги</a>
         <a href="#contact" class="btn-secondary">Написать</a>
       </div>
       <div class="hero-meta">
-        опыт с 2015<br>
-        <strong>150+</strong>
-        завершённых проектов
+        <div class="hero-stat">
+          <strong>300+</strong>
+          <span>миксов</span>
+        </div>
+        <div class="hero-stat">
+          <strong>8 лет</strong>
+          <span>опыта</span>
+        </div>
+        <div class="hero-stat">
+          <strong>30</strong>
+          <span>артистов с 100к+ прослушиваниями</span>
+        </div>
       </div>
     </div>
   </section>
