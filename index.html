@@ -1164,7 +1164,7 @@
           <ul class="contact-list">
             <li>
               <span>Email</span>
-              <a href="/cdn-cgi/l/email-protection#daacbeb5acb1b3b485b7bbb1a9b3b79ab7bbb3b6f4a8af">vdovkin_maksim&#64;mail.ru</a>
+              <a href="/cdn-cgi/l/email-protection#c9bfada6bfa2a0a796a4a8a2baa0a489a4a8a0a5e7bbbc">vdovkin_maksim&#64;mail.ru</a>
             </li>
             <li>
               <span>Telegram</span>
@@ -1177,9 +1177,9 @@
 
         <div>
           <h3 style="font-family: 'PT Serif', serif; font-size: 32px; font-weight: 600; letter-spacing: -0.02em;">Оставить заявку</h3>
-          <form action="https://formsubmit.co/vdovkin_maksim@mail.ru" method="POST">
+
+          <form id="contact-form" action="https://formsubmit.co/ajax/vdovkin_maksim@mail.ru" method="POST">
             <input type="hidden" name="_subject" value="Новая заявка с сайта Sarco">
-            <input type="hidden" name="_next" value="about:blank">
             <input type="hidden" name="_captcha" value="false">
             <div class="form-row">
               <input type="text" name="name" placeholder="Ваше имя" required>
@@ -1190,8 +1190,14 @@
             <div class="form-row">
               <textarea name="message" placeholder="Расскажите о задаче"></textarea>
             </div>
-            <button type="submit">Отправить заявку →</button>
+            <button type="submit" id="contact-submit">Отправить заявку →</button>
           </form>
+
+          <div id="contact-thanks" style="display:none; margin-top: 48px; padding: 40px 32px; border: 1.5px solid var(--border);">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--accent); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:16px;">◆ Заявка принята</div>
+            <p style="font-family:'PT Serif',serif; font-size:28px; font-weight:600; letter-spacing:-0.02em; line-height:1.15; margin-bottom:12px;">Спасибо за заявку</p>
+            <p style="color:var(--fg-dim); font-size:16px; line-height:1.65;">Я в ближайшее время с вами свяжусь.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1321,6 +1327,39 @@
       if (!aud.duration) return;
       var rect = bar.getBoundingClientRect();
       aud.currentTime = ((e.clientX - rect.left) / rect.width) * aud.duration;
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var form = document.getElementById('contact-form');
+  var thanks = document.getElementById('contact-thanks');
+  var submitBtn = document.getElementById('contact-submit');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляем…';
+
+    var data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(json) {
+      form.style.display = 'none';
+      thanks.style.display = 'block';
+    })
+    .catch(function() {
+      /* даже если ответ не распарсился — письмо скорее всего ушло */
+      form.style.display = 'none';
+      thanks.style.display = 'block';
     });
   });
 })();
