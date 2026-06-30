@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="canonical" href="https://sarcomixing.ru/">
+<meta name="description" content="Максим Сарко — профессиональное сведение и мастеринг треков в Санкт-Петербурге. Работаю с артистами любого уровня. От демо до релиза.">
+<meta property="og:title" content="Sarco. Сведение и мастеринг. Звукорежиссёр Максим">
+<meta property="og:description" content="Профессиональное сведение и мастеринг. Результат звучит так, как ты хочешь.">
+<meta property="og:image" content="https://sarcomixing.ru/sarco-logo.png">
+<meta property="og:url" content="https://sarcomixing.ru/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -22,8 +30,7 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/110174441" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-<title>Sarco</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23C8102E'/><text y='76' x='14' font-size='80' font-family='Georgia,serif' font-weight='700' font-style='italic' fill='white' stroke='white' stroke-width='2'>s</text></svg>">
+<title>Sarco. Сведение и мастеринг. Звукорежиссёр Максим</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Golos+Text:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -116,13 +123,14 @@
     display: block;
     width: 24px;
     height: 2px;
-    background: #fff;
+    background: var(--fg);
     border-radius: 2px;
     transition: transform 0.3s, opacity 0.3s;
   }
   .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .burger.open span:nth-child(2) { opacity: 0; }
   .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .burger.open span { background: #fff; }
 
   .nav-cta {
     background: var(--accent-grad);
@@ -670,7 +678,7 @@
   .work-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.7);
     text-transform: uppercase;
     letter-spacing: 0.14em;
     margin-bottom: 36px;
@@ -738,7 +746,7 @@
   .player-time {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.7);
     min-width: 36px;
     text-align: right;
   }
@@ -779,39 +787,7 @@
   }
   .contact-list a:hover { color: var(--accent); }
 
-  form { margin-top: 48px; }
-  .form-row { margin-bottom: 20px; }
-  input, textarea {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1.5px solid var(--border-soft);
-    padding: 16px 0;
-    color: var(--fg);
-    font-family: inherit;
-    font-size: 16px;
-    transition: border-color 0.2s;
-  }
-  input::placeholder, textarea::placeholder { color: var(--fg-dim); }
-  input:focus, textarea:focus {
-    outline: none;
-    border-bottom-color: var(--accent);
-  }
-  textarea { resize: vertical; min-height: 100px; }
-  button[type="submit"] {
-    background: var(--accent-grad);
-    color: #fff;
-    border: 1.5px solid var(--accent);
-    padding: 16px 32px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: all 0.2s;
-  }
-  button[type="submit"]:hover { background: transparent; color: var(--accent); }
+
   @media (max-width: 768px) {
     .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   }
@@ -938,7 +914,7 @@
 <body>
 
 <nav>
-  <a href="#" class="logo"><img src="sarco-logo.png" alt="Sarco — mixing &amp; mastering"></a>
+  <a href="/" class="logo"><img src="sarco-logo.png" alt="Sarco — mixing &amp; mastering"></a>
   <div class="nav-links">
     <a href="#services">Услуги</a>
     <a href="#works">Мои работы</a>
@@ -947,7 +923,7 @@
     <a href="#contact">Контакты</a>
   </div>
   <a href="#contact" class="nav-cta">Связаться</a>
-  <button class="burger" id="burger" aria-label="Меню">
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -955,7 +931,7 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="container">
       <div class="hero-label">Хочу работать именно с тобой</div>
       <h1>Сделаю <em>звук, который<br>продаст</em> твою музыку</h1>
@@ -986,13 +962,13 @@
     <div class="container" style="padding-top: 120px; padding-bottom: 120px;">
       <div class="section-label">◆ Примеры работ</div>
       <h2 class="section-title">Послушай <em>результат</em></h2>
-      <p style="color:rgba(255,255,255,0.45); font-size:17px; margin-top:12px; max-width:520px; line-height:1.6;">Реальные треки: нажми и услышь разницу.</p>
+      <p style="color:rgba(255,255,255,0.7); font-size:17px; margin-top:12px; max-width:520px; line-height:1.6;">Реальные треки: нажми и услышь разницу.</p>
 
       <div class="works-grid">
 
         <!-- TRACK 1 -->
         <div class="work-player" id="wp1">
-          <audio id="aud1" src="Track-№1-Before_After.mp3" preload="none"></audio>
+          <audio id="aud1" src="track-1-before-after.mp3" preload="none"></audio>
           <div class="work-num">01 / ТРЕК</div>
           <div class="work-title">Трек #1</div>
           <div class="work-tag">До &amp; После</div>
@@ -1010,7 +986,7 @@
 
         <!-- TRACK 2 -->
         <div class="work-player" id="wp2">
-          <audio id="aud2" src="Track-№2-Before_After.mp3" preload="none"></audio>
+          <audio id="aud2" src="track-2-before-after.mp3" preload="none"></audio>
           <div class="work-num">02 / ТРЕК</div>
           <div class="work-title">Трек #2</div>
           <div class="work-tag">До &amp; После</div>
@@ -1028,7 +1004,7 @@
 
         <!-- TRACK 3 -->
         <div class="work-player" id="wp3">
-          <audio id="aud3" src="Track-№3-Before_After.mp3" preload="none"></audio>
+          <audio id="aud3" src="track-3-before-after.mp3" preload="none"></audio>
           <div class="work-num">03 / ТРЕК</div>
           <div class="work-title">Трек #3</div>
           <div class="work-tag">До &amp; После</div>
@@ -1055,7 +1031,7 @@
       <h2 class="section-title">Услуги, которые <em>приносят результат</em></h2>
 
       <div class="services-grid">
-        <a href="#contact" class="service">
+        <a href="https://t.me/vdovkinmaksim" target="_blank" rel="noopener" class="service">
           <div class="service-num">01 / УСЛУГА</div>
           <div class="service-icon">A</div>
           <h3>Сведение</h3>
@@ -1063,7 +1039,7 @@
           <div class="service-price">4 000 ₽</div>
         </a>
 
-        <a href="#contact" class="service">
+        <a href="https://t.me/vdovkinmaksim" target="_blank" rel="noopener" class="service">
           <div class="service-num">02 / УСЛУГА</div>
           <div class="service-icon">B</div>
           <h3>Мастеринг</h3>
@@ -1071,7 +1047,7 @@
           <div class="service-price">1 500 ₽</div>
         </a>
 
-        <a href="#contact" class="service">
+        <a href="https://t.me/vdovkinmaksim" target="_blank" rel="noopener" class="service">
           <div class="service-num">03 / УСЛУГА</div>
           <div class="service-icon">C</div>
           <h3>Сведение + мастеринг</h3>
@@ -1079,7 +1055,7 @@
           <div class="service-price">5 000 ₽</div>
         </a>
 
-        <a href="#contact" class="service">
+        <a href="https://t.me/vdovkinmaksim" target="_blank" rel="noopener" class="service">
           <div class="service-num">04 / УСЛУГА</div>
           <div class="service-icon">D</div>
           <h3>Ручной тюн и редакция вокала</h3>
@@ -1095,7 +1071,7 @@
     <div class="banner-inner">
       <div>
         <h2>−30% на первый<br>заказ</h2>
-        <p>У нас будет возможность познакомиться и начать наш путь к долгосрочному сотрудничеству.</p>
+        <p>Попробуй как я работаю: скидка действует на первый заказ.</p>
       </div>
       <a href="#contact" class="banner-cta">Получить скидку →</a>
     </div>
@@ -1113,7 +1089,7 @@
           <div class="about-role">◆ Звукорежиссёр · Сведение &amp; мастеринг</div>
         </div>
         <div class="about-photo">
-          <img src="sarco-studio-small.png" alt="Максим в студии сведения и мастеринга">
+          <img src="sarco-studio-small.png" alt="Максим в студии сведения и мастеринга" loading="lazy" width="900" height="675">
         </div>
         <div class="about-body">
           <p>Превращаю твою задумку в готовый трек, который звучит так, как ты слышишь его в голове.</p>
@@ -1187,14 +1163,14 @@
             </li>
             <li>
               <span>Email</span>
-              <a href="/cdn-cgi/l/email-protection#e89e8c879e838186b78589839b8185a885898184c69a9d">vdovkin_maksim&#64;mail.ru</a>
+              <a href="/cdn-cgi/l/email-protection#d3a5b7bca5b8babd8cbeb2b8a0babe93beb2babffda1a6">vdovkin_maksim&#64;mail.ru</a>
             </li>
           </ul>
         </div>
 
         <div style="display: flex; flex-direction: column; justify-content: center; gap: 16px;">
           <a href="https://t.me/vdovkinmaksim" target="_blank" rel="noopener" class="btn-primary" style="display: inline-block; font-size: 15px; padding: 20px 40px; text-align: center;">Написать в Telegram →</a>
-          <a href="/cdn-cgi/l/email-protection#a0d6c4cfd6cbc9ceffcdc1cbd3c9cde0cdc1c9cc8ed2d5" class="btn-secondary" style="display: inline-block; font-size: 15px; padding: 20px 40px; text-align: center;">Написать на почту →</a>
+          <a href="/cdn-cgi/l/email-protection#ddabb9b2abb6b4b382b0bcb6aeb4b09db0bcb4b1f3afa8" class="btn-secondary" style="display: inline-block; font-size: 15px; padding: 20px 40px; text-align: center;">Написать на почту →</a>
         </div>
       </div>
     </div>
@@ -1211,17 +1187,26 @@
 (function(){
   var burger = document.getElementById('burger');
   var navLinks = document.querySelector('.nav-links');
+  function closeMenu() {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+    document.body.style.overflow = '';
+    burger.setAttribute('aria-expanded', 'false');
+    burger.focus();
+  }
   burger.addEventListener('click', function() {
+    var isOpen = navLinks.classList.toggle('open');
     burger.classList.toggle('open');
-    navLinks.classList.toggle('open');
-    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
   navLinks.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      burger.classList.remove('open');
-      navLinks.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      closeMenu();
+    }
   });
 })();
 </script>
@@ -1288,10 +1273,13 @@
       /* pause other players */
       [1, 2, 3].filter(function(i){ return i !== n; }).forEach(function(o) {
         var oAud = document.getElementById('aud' + o);
+        var oBtn = document.getElementById('btn' + o);
         if (!oAud.paused) {
           oAud.pause();
           document.getElementById('wp' + o).classList.remove('playing');
-          document.getElementById('btn' + o).querySelector('path').setAttribute('d', 'M8 5v14l11-7z');
+          oBtn.querySelector('path').setAttribute('d', 'M8 5v14l11-7z');
+          oBtn.setAttribute('aria-label', 'Воспроизвести');
+          oBtn.setAttribute('aria-pressed', 'false');
         }
       });
 
@@ -1299,10 +1287,14 @@
         aud.play();
         wp.classList.add('playing');
         btn.querySelector('path').setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z');
+        btn.setAttribute('aria-label', 'Пауза');
+        btn.setAttribute('aria-pressed', 'true');
       } else {
         aud.pause();
         wp.classList.remove('playing');
         btn.querySelector('path').setAttribute('d', 'M8 5v14l11-7z');
+        btn.setAttribute('aria-label', 'Воспроизвести');
+        btn.setAttribute('aria-pressed', 'false');
       }
     });
 
@@ -1315,6 +1307,8 @@
     aud.addEventListener('ended', function() {
       wp.classList.remove('playing');
       btn.querySelector('path').setAttribute('d', 'M8 5v14l11-7z');
+      btn.setAttribute('aria-label', 'Воспроизвести');
+      btn.setAttribute('aria-pressed', 'false');
       fill.style.width = '0%';
       timeEl.textContent = '0:00';
       aud.currentTime = 0;
