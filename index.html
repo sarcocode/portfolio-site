@@ -87,6 +87,12 @@
   .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
   /* NAV */
+  /* Safari 26 tints the status-bar area from the background-color of whatever
+     position:fixed element sits full-width at the very top of the page — it
+     reads that property on the element itself, not on a child. The color
+     must be solid (not transparent) or Safari renders true glass and blurs
+     real page content through the status bar. So the white background and
+     border must live directly on <nav>, not on a separate .nav-bg child. */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -95,19 +101,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: transparent;
-    z-index: 100;
-  }
-  /* white background lives on a CHILD, not on the fixed <nav> itself — so iOS 26
-     Safari samples the body background (white) for the status-bar tint instead
-     of tinting the bar from the fixed header. */
-  .nav-bg {
-    position: absolute;
-    inset: 0;
     background: #ffffff;
     border-bottom: 1.5px solid var(--border);
-    pointer-events: none;
-    z-index: -1;
+    z-index: 100;
   }
   .logo {
     display: block;
@@ -933,7 +929,6 @@
 <body>
 
 <nav>
-  <div class="nav-bg"></div>
   <a href="/" class="logo"><img src="sarco-logo.png" alt="Sarco — mixing &amp; mastering"></a>
   <div class="nav-links">
     <a href="#services">Услуги</a>
