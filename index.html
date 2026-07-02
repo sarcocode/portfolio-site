@@ -6,7 +6,9 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="canonical" href="https://sarcomixing.ru/">
 <meta name="description" content="Максим Сарко — профессиональное сведение и мастеринг треков в Санкт-Петербурге. Работаю с артистами любого уровня. От демо до релиза.">
@@ -53,7 +55,8 @@
     --accent-grad: linear-gradient(135deg, #E0123A 0%, #C8102E 52%, #9E0C22 100%);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; scroll-padding-top: 96px; background: var(--bg); }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; background: var(--bg); color-scheme: light; }
+  :root { color-scheme: light; }
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -67,22 +70,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  /* fill the iOS status-bar / notch area with a SOLID bar so nothing shows through */
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: env(safe-area-inset-top, 0px);
-    background: #ffffff;
-    z-index: 200;
-    pointer-events: none;
-  }
   main { position: relative; }
-  /* PRINT-LIKE GRAIN */
+  /* PRINT-LIKE GRAIN — kept OUT of the iOS status-bar strip so Safari 26
+     (Liquid Glass) doesn't sample this translucent multiply layer to tint
+     the status bar. Starts below the safe-area inset. */
   body::before {
     content: "";
     position: fixed;
-    inset: 0;
+    top: env(safe-area-inset-top, 0px); left: 0; right: 0; bottom: 0;
     pointer-events: none;
     z-index: 9999;
     opacity: 0.04;
@@ -103,17 +98,6 @@
     background: #ffffff;
     border-bottom: 1.5px solid var(--border);
     z-index: 100;
-  }
-  /* extend the white nav background UPWARD to cover the iOS status-bar strip
-     that appears when Safari collapses its top toolbar on scroll */
-  nav::before {
-    content: "";
-    position: absolute;
-    left: 0; right: 0;
-    bottom: 100%;
-    height: 300px;
-    background: #ffffff;
-    pointer-events: none;
   }
   .logo {
     display: block;
