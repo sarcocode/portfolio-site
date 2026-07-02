@@ -67,14 +67,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  /* fill the iOS status-bar / notch area with the page bg so nothing shows through */
+  /* fill the iOS status-bar / notch area with a SOLID bar so nothing shows through */
   body::after {
     content: "";
     position: fixed;
     top: 0; left: 0; right: 0;
-    height: env(safe-area-inset-top);
-    background: var(--bg);
-    z-index: 101;
+    height: env(safe-area-inset-top, 0px);
+    background: #ffffff;
+    z-index: 200;
     pointer-events: none;
   }
   main { position: relative; }
@@ -100,10 +100,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255,255,255,0.95);
+    background: #ffffff;
     backdrop-filter: blur(16px);
     border-bottom: 1.5px solid var(--border);
     z-index: 100;
+  }
+  /* extend the white nav background UPWARD to cover the iOS status-bar strip
+     that appears when Safari collapses its top toolbar on scroll */
+  nav::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 100%;
+    height: 300px;
+    background: #ffffff;
+    pointer-events: none;
   }
   .logo {
     display: block;
