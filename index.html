@@ -95,9 +95,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: transparent;
+    z-index: 100;
+  }
+  /* white background lives on a CHILD, not on the fixed <nav> itself — so iOS 26
+     Safari samples the body background (white) for the status-bar tint instead
+     of tinting the bar from the fixed header. */
+  .nav-bg {
+    position: absolute;
+    inset: 0;
     background: #ffffff;
     border-bottom: 1.5px solid var(--border);
-    z-index: 100;
+    pointer-events: none;
+    z-index: -1;
   }
   .logo {
     display: block;
@@ -923,6 +933,7 @@
 <body>
 
 <nav>
+  <div class="nav-bg"></div>
   <a href="/" class="logo"><img src="sarco-logo.png" alt="Sarco — mixing &amp; mastering"></a>
   <div class="nav-links">
     <a href="#services">Услуги</a>
