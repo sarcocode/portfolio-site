@@ -89,29 +89,23 @@
   /* NAV */
   /* iOS 26 Safari has a confirmed WebKit bug (bugs.webkit.org #297779) where
      position:fixed elements can render offset from their computed position
-     after a scroll-direction change, and a fixed element carrying its own
-     background-color/backdrop-filter is more prone to tripping it. Keep the
-     fixed element itself paint-free and put the visible white background on
-     an absolute-positioned child instead — body's own white background-color
-     still gives Safari a solid base to sample for the status-bar tint. */
+     after a scroll-direction change, leaving a gap with stale content showing
+     through above the header. position:sticky is a different code path in
+     the engine and isn't named in that bug, so use it instead — nav is the
+     first element in body, so `top: 0` sticks it immediately, same visual
+     result as fixed. Safari's status-bar tint doesn't sample sticky elements,
+     it falls back to body's background-color, which is white anyway. */
   nav {
-    position: fixed;
+    position: sticky;
     top: 0; left: 0; right: 0;
     padding: 12px 40px;
     padding-top: max(12px, env(safe-area-inset-top));
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: transparent;
-    z-index: 100;
-  }
-  .nav-bg {
-    position: absolute;
-    inset: 0;
     background: #ffffff;
     border-bottom: 1.5px solid var(--border);
-    pointer-events: none;
-    z-index: -1;
+    z-index: 100;
   }
   .logo {
     display: block;
@@ -937,7 +931,6 @@
 <body>
 
 <nav>
-  <div class="nav-bg"></div>
   <a href="/" class="logo"><img src="sarco-logo.png" alt="Sarco — mixing &amp; mastering"></a>
   <div class="nav-links">
     <a href="#services">Услуги</a>
