@@ -1201,10 +1201,20 @@
 </footer>
 
 <script>
+// Yandex Metrika goals — fires only if the counter loaded (ad-blockers etc. skip silently).
+function ymGoal(name) {
+  if (typeof ym === 'function') { ym(110174441, 'reachGoal', name); }
+}
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href*="t.me/vdovkinmaksim"]');
+  if (link) { ymGoal('telegram_click'); }
+});
+
 // Email copy fallback — mailto still fires; this also copies the address
 // and shows a small confirmation in case the device has no mail client set up.
 function copyEmail(e, el) {
   var email = 'vdovkin_maksim@mail.ru';
+  ymGoal('email_click');
   try {
     var ta = document.createElement('textarea');
     ta.value = email;
@@ -1329,6 +1339,7 @@ function copyEmail(e, el) {
 
       if (aud.paused) {
         aud.play();
+        ymGoal('track_play');
         wp.classList.add('playing');
         btn.querySelector('path').setAttribute('d', 'M6 19h4V5H6v14zm8-14v14h4V5h-4z');
         btn.setAttribute('aria-label', 'Пауза');
