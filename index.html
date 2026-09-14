@@ -161,6 +161,9 @@ document.addEventListener('click', function(e) {
   a:hover { color: #ffffff; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  /* На узких экранах строка копирайта с городом не влезает и переносится так,
+     что разделитель повисает отдельно — поэтому слегка ужимаем её. */
+  @media (max-width: 460px) { footer { font-size: 10px !important; letter-spacing: 0.06em !important; } }
 </style>
 </helmet>
 
@@ -329,7 +332,7 @@ document.addEventListener('click', function(e) {
       </div>
     </div>
   </div>
-</section><footer style="background:#0e0c10;padding:36px 32px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);border-top:1px solid rgba(255,255,255,0.12)">© 2026 · sarco mix&amp;master</footer>
+</section><footer style="background:#0e0c10;padding:36px 32px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);border-top:1px solid rgba(255,255,255,0.12)">© 2026 · sarco mix&amp;master ·&nbsp;Санкт-Петербург</footer>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showPromo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Контент&quot;}}">
